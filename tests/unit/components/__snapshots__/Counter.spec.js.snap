@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en Counter Debe de hacer match con el snapshot 1`] = `
+<h2>Counter</h2>
+<p> <sup>2</sup> = NaN</p>
+<p> <sup>2</sup> = NaN</p>
+<p> <sup>2</sup> = NaN</p>
+<h3></h3>
+<div><button>+1</button><button>-1</button></div>
+`;
