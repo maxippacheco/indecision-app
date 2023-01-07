@@ -18,4 +18,24 @@ describe('Pruebas en Counter', () => {
 		expect( h2.text() ).toBe('Counter')
 	
 	})
+
+
+	test('el valor debe ser 10 en h3', () => {
+		const wrapper = shallowMount( Counter )
+
+		const h3 = wrapper.find('h3')
+		expect( h3.text()).toBe("10")
+	})
+
+	test('debe de incrementar en 1 el valor del contador', async() => {
+		const wrapper = shallowMount( Counter );
+
+		const increaseBtn = wrapper.find('button');
+
+		await increaseBtn.trigger('click');
+
+		const h3 = wrapper.find('h3')
+		expect( h3.text()).toBe("11")
+
+	})
 })
