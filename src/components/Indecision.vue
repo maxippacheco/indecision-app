@@ -31,24 +31,38 @@ export default {
 	},
 	methods:{
 		async getAnswer(){
-			this.answer = 'Pensando...';
-
-			const { answer, image } = await fetch('https://yesno.wtf/api').then( resp => resp.json() )
-			this.answer = answer;
-			this.img = image
+			try{
+				this.answer = 'Pensando...';
+				
+				const { answer, image } = await fetch('https://yesno.wtf/api').then( resp => resp.json() )
+				
+				this.answer = answer;
+				this.img = image
+				
+			} catch (error) {
+				this.answer = 'NO SE PUDO CARGAR API'
+				this.img = null
+			}
 		}
 	},
 	watch: {
 		question( value, oldValue ){
 
-			this.isValidQuestion = false;
+			try {
+				this.isValidQuestion = false;
+	
+	
+				if(!value.includes('?')) return;
+				this.isValidQuestion = true;
+				// console.log({ value });
+				
+				this.getAnswer();
+				
+			} catch (error) {
+				this.answer = 'NO SE PUDO CARGAR API'
+				this.img = null
+			}
 
-
-			if(!value.includes('?')) return;
-			this.isValidQuestion = true;
-			console.log({ value });
-			
-			this.getAnswer();
 		}
 	}
 }
